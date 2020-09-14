@@ -33,9 +33,14 @@
 
 
 ## seller テーブル
-
+| column           | Type       | Options          |
+| ---------------- | ---------- | ---------------- |
+| user_id          | references | foreign_key:true |
 
 ## buyer テーブル
+| column           | Type       | Options          |
+| ---------------- | ---------- | ---------------- |
+| user_id          | references | foreign_key:true |
 
 
 ## sending_destination テーブル
