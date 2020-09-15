@@ -21,7 +21,7 @@
 
 
 
-## transaction (取引管理) テーブル
+## transactions (取引管理) テーブル
 | column           | Type       | Options          |
 | ---------------- | ---------- | ---------------- |
 | user_id          | references | foreign_key:true |
@@ -33,12 +33,12 @@
 - has_one :sending_destination
 
 
-## sending_destination テーブル
+## sending_destinations テーブル
  
 | column              | Type        | Options              |
 | ----------------    | ------      | ------------         |
-| post_code_id        | string      | null: false          |
-| prefecture_code _id | integer     | null: false          |
+| post_code           | string      | null: false          |
+| prefecture_code_id  | integer     | null: false          |
 | city                | string      | null: false          |
 | house_number        | string      | null: false          |
 | building_name       | string      |                      |
@@ -58,10 +58,10 @@
 | introduction        | text    | null: false          |
 | category_id         | integer | null: false          |
 | condition_id        | integer | null: false          |
-| shipping expense_id | integer | null: false          |
-| ship-from area_id   | integer | null: false,user_id  |
-| processing time_id  | integer | null: false,user_id  |
-| selling price       | integer | null: false,user_id  |
+| shipping_expense_id | integer | null: false          |
+| ship_from_area_id   | integer | null: false,user_id  |
+| processing_time_id  | integer | null: false,user_id  |
+| selling_price       | integer | null: false,user_id  |
 | user_id             | references |foreign_key:true   |
 
 ### Association 
