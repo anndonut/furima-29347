@@ -16,7 +16,7 @@
 
 ### Association 
 - has_many : items
-- has_one  : sending_destination, dependent: :destroy
+
 
 
 
@@ -28,39 +28,41 @@
 
 ### Association 
 - belongs_to: user
-- belongs_to: item
+- has_many: items
+- belongs_to :sending_destination
 
 
 ## sending_destination テーブル
-
-| column           | Type    | Options     |
-| ---------------- | ------  | ------------|
-| post_code        | string  | null: false |
-| prefecture_code  | integer | null: false |
-| city             | string  | null: false |
-| house_number     | string  | null: false |
-| building_name    | string  |             |
-| phone_number     | string  | null: false |
+ 
+| column              | Type    | Options              |
+| ----------------    | ------  | ------------         |
+| post_code_id        | string  | null: false          |
+| prefecture_code _id | integer | null: false          |
+| city                | string  | null: false          |
+| house_number        | string  | null: false          |
+| building_name       | string  |                      |
+| phone_number        | string  | null: false          |
 
 ### Association 
-- belongs_to :user
+- has_many :transaction
 - Gem：jp_prefectureを使用して都道府県コードを取得
 
 ## items テーブル
 
-| column           | Type   | Options      |
-| ---------------- | ------ | ------------ |
-| name             | string  | null: false |
-| introduction     | text    | null: false |
-| category         | integer | null: false |
-| condition        | integer | null: false |
-| shipping expense | integer | null: false |
-| ship-from area   | integer | null: false |
-| processing time  | integer | null: false |
-| selling price    | integer | null: false |
+| column              | Type   | Options               |
+| ----------------    | ------ | ------------          |
+| name                | string  | null: false          |
+| introduction        | text    | null: false          |
+| category_id         | integer | null: false          |
+| condition_id        | integer | null: false          |
+| shipping expense_id | integer | null: false          |
+| ship-from area_id   | integer | null: false,user_id,foreign_key: true |
+| processing time_id  | integer | null: false,user_id, foreign_key: true |
+| selling price       | integer | null: false,user_id, foreign_key: true |
 
 
 ### Association 
 - belongs_to :user, class_name: "User"
+- belongs_to :transaction, class_name: "Transaction"
 
 
