@@ -11,16 +11,13 @@
 | family_name      | string | null: false |
 | first_name_kana  | string | null: false |
 | family_name_kana | string | null: false |
-| birth_day        | date.strftime("%Y年%m月%d日")   | null: false |
+| birth_day        | date   | null: false |
 
 
 ### Association 
 - has_many : items
-- has_many : seller_items, foreign_key:"seller_id", class_name: "items"
-- has_many : buyer_items, foreign_key:"buyer_id", class_name: "items"
-- has_one  : profile, dependent: :destroy
 - has_one  : sending_destination, dependent: :destroy
-- has_one  : credit_card, dependent: :destroy
+
 
 
 ## transaction (取引管理) テーブル
@@ -36,14 +33,14 @@
 
 ## sending_destination テーブル
 
-| column           | Type   | Options      |
-| ---------------- | ------ | ------------ |
-| post_code        | integer | null: false |
-| prefecture_code  | integer | null: false |
-| city             | string  | null: false |
-| house_number     | string  | null: false |
-| building_name    | string  |             |
-| phone_number     | string  | null: false |
+| column           | Type    | Options                      |
+| ---------------- | ------  | ------------                 |
+| post_code        | string  | null: false                  |
+| prefecture_code  | integer | null: false                  |
+| city             | string  | null: false,foreign_key:true |
+| house_number     | string  | null: false,foreign_key:true |
+| building_name    | string  | foreign_key:true             |
+| phone_number     | string  | null: false,foreign_key:true |
 
 ### Association 
 - belongs_to :user
@@ -64,7 +61,7 @@
 
 
 ### Association 
-- belongs_to :seller, class_name: "User"
-- belongs_to :buyer,  class_name: "User"
+- belongs_to :user, class_name: "User"
 
 
+## items テーブル
