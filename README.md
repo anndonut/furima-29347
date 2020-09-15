@@ -59,9 +59,9 @@
 | category_id         | integer | null: false          |
 | condition_id        | integer | null: false          |
 | shipping_expense_id | integer | null: false          |
-| ship_from_area_id   | integer | null: false,user_id  |
-| processing_time_id  | integer | null: false,user_id  |
-| selling_price       | integer | null: false,user_id  |
+| ship_from_area_id   | integer | null: false          |
+| processing_time_id  | integer | null: false          |
+| selling_price       | integer | null: false          |
 | user_id             | references |foreign_key:true   |
 
 ### Association 
