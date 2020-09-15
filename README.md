@@ -24,8 +24,8 @@
 ## transactions (取引管理) テーブル
 | column           | Type       | Options          |
 | ---------------- | ---------- | ---------------- |
-| user_id          | references | foreign_key:true |
-| item_id          | references | foreign_key:true |
+| user             | references | foreign_key:true |
+| item             | references | foreign_key:true |
 
 ### Association 
 - belongs_to: user
@@ -43,7 +43,7 @@
 | house_number        | string      | null: false          |
 | building_name       | string      |                      |
 | phone_number        | string      | null: false          |
-| transaction_id      | references  | foreign_key:true     |
+| transaction         | references  | foreign_key:true     |
 
 
 ### Association 
@@ -62,7 +62,7 @@
 | ship_from_area_id   | integer | null: false          |
 | processing_time_id  | integer | null: false          |
 | selling_price       | integer | null: false          |
-| user_id             | references |foreign_key:true   |
+| user                | references |foreign_key:true   |
 
 ### Association 
 - belongs_to :user, class_name: "User"
