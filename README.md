@@ -33,14 +33,14 @@
 
 ## sending_destination テーブル
 
-| column           | Type    | Options                      |
-| ---------------- | ------  | ------------                 |
-| post_code        | string  | null: false                  |
-| prefecture_code  | integer | null: false                  |
-| city             | string  | null: false,foreign_key:true |
-| house_number     | string  | null: false,foreign_key:true |
-| building_name    | string  | foreign_key:true             |
-| phone_number     | string  | null: false,foreign_key:true |
+| column           | Type    | Options     |
+| ---------------- | ------  | ------------|
+| post_code        | string  | null: false |
+| prefecture_code  | integer | null: false |
+| city             | string  | null: false |
+| house_number     | string  | null: false |
+| building_name    | string  |             |
+| phone_number     | string  | null: false |
 
 ### Association 
 - belongs_to :user
@@ -64,4 +64,3 @@
 - belongs_to :user, class_name: "User"
 
 
-## items テーブル
