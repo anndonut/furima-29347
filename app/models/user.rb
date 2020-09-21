@@ -4,8 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :nickname,:first_name,:family_name,:first_name_kana, :family_name_kana,:birth_day ,presence: true
-  # validates :password,presence:true,length:{minimum:6}
-  # validates :password, confirmation: true
+ 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください' 
 
