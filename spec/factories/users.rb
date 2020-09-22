@@ -1,10 +1,10 @@
 FactoryBot.define do
 
   factory :user do
-    first_name            {“kkk”}
-    first_name_kana       {“カタカナ”}
-    last_name             {“kkk”}
-    last_name_kana        {“カタカナ”}
+    first_name            {'kkk'}
+    first_name_kana       {'カタカナ'}
+    last_name             {'kkk'}
+    last_name_kana        {'カタカナ'}
     nickname              {Faker::Name.initials(number: 2)}
     birth_year            {2020}
     birth_month           {1}
