@@ -1,4 +1,5 @@
 FactoryBot.define do
+<<<<<<< HEAD
 
   factory :user do
     first_name            {“kkk”}
@@ -11,6 +12,12 @@ FactoryBot.define do
     birth_day             {1}
     email                 {Faker::Internet.free_email}
     password              {Faker::Internet.password(min_length: 6)}
+=======
+  factory :user do
+    nickname              {"abe"}
+    email                 {"kkk@gmail.com"}
+    password              {"00000000"}
+>>>>>>> master
     password_confirmation {password}
   end
 end

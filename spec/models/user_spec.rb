@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 RSpec.describe User, type: :model do
   before do
     @user = FactoryBot.build(:user)
@@ -119,6 +120,7 @@ RSpec.describe User, type: :model do
         user.valid?
         expect(user.errors[:last_name_kana]).to include("はカタカナで入力してください")
       end
+    
   
       # 17. first_name_kanaがカタカナでないと登録できないこと    
       it 'first_name_kanaがカタカナで返ること' do
@@ -128,3 +130,4 @@ RSpec.describe User, type: :model do
       end
     end
   end
+end
