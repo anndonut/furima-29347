@@ -3,20 +3,19 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
-  def new
-    @user = User.new
-  end 
+  # def new
+  #   @user = User.new
+  # end 
 
   # def create
-  #   @user = User.new(sign_up_params)
+  #   @user = User.new(sign_in_params)
   #   if @user.valid?
   #      @user.save
+
   #   else
   #     render :new and return
   #    end
-  #   # session["devise.regist_data"] = {user: @user.attributes}
-  #   # session["devise.regist_data"][:user]["password"] = params[:user][:password]
-  #   # @address = @user.build_address
+  
   #   redirect_to root_path
   # end
 
