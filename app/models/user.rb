@@ -13,12 +13,12 @@ class User < ApplicationRecord
     validates :family_name
   end
 
-  with_options presence: true, format: { with: /\A[ｧ-ﾝﾞﾟ]+\z/, message: '全角文字(カナ)を使用してください' } do
+  with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: '全角文字(カナ)を使用してください' } do
     validates :first_name_kana
     validates :family_name_kana
   end
 
-  with_options presence: true, format: { with:/\A[0-9]+\z/, message: '生年月日を入力してください' } do
-    validates :birth_day
-  end
+  # with_options presence: true, format: { with:/\A[0-9]+\z/, message: '生年月日を入力してください' } do
+  #   validates :birth_day
+  # end
 end
