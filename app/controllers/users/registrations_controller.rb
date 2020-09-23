@@ -9,16 +9,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end 
 
   def create
+
     @user = User.new(sign_up_params)
     if @user.valid?
        @user.save
+       redirect_to root_path
     else
       render :new and return
      end
     # session["devise.regist_data"] = {user: @user.attributes}
     # session["devise.regist_data"][:user]["password"] = params[:user][:password]
     # @address = @user.build_address
-    redirect_to root_path
+    
   end
 
   # GET /resource/sign_up
