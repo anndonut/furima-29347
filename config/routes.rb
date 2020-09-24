@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   # end
 
   # resources :users, only: [:index, :new, :create]
-  resources :items, only: [:index, :new, :show, :edit]
+  resources :items 
+  
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

@@ -25,7 +25,10 @@ class ItemsController < ApplicationController
       :condition_id,
       :shipping_expense_id,
       :ship_from_area_id,
-      :processing_time_id
+      :processing_time_id,
+      :name,
+      :introduction,
+      :selling_price
     )
   end
 end
