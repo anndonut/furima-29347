@@ -84,12 +84,20 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include ("Selling price is not a number")
     end
 
-    # 価格の範囲が、¥300~¥9,999,999の間でなければ出品できないこと
-    it '価格の範囲が、¥300~¥9,999,999の間でなければ出品できない'do
+    # 価格の範囲が、¥300以下では出品できないこと
+    it '価格の範囲が、¥300以下では出品できないこと'do
       @item.selling_price  = 200
       @item.valid?
       expect(@item.errors.full_messages).to include ("Selling price must be greater than or equal to 300")
    end
+
+   # 価格の範囲が、¥9,999,999以上では出品できないこと
+   it '価格の範囲が、¥9,999,999以上では出品できないこと'do
+    @item.selling_price  = 10,000,000
+    @item.valid?
+    expect(@item.errors.full_messages).to include ( "Selling price is not a number")
+  end 
+
 
     # 販売価格は半角数字のみ保存可能であること
     it '販売価格は半角数字でなければ出品できない'do
