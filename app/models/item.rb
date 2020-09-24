@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user, class_name: "User"
+  has_one_attached :image
   # has_one :transaction, class_name: "Transaction"
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -9,7 +10,6 @@ class Item < ApplicationRecord
     belongs_to_active_hash :ship_from_area
     belongs_to_active_hash :processing_time
 
-    # :shipping_expense,:ship_from_area,:processing_time
 
     #選択が「--」のままになっていないか
     with_options numericality: { other_than: 1 } do

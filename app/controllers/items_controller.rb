@@ -28,7 +28,8 @@ class ItemsController < ApplicationController
       :processing_time_id,
       :name,
       :introduction,
-      :selling_price
+      :selling_price,
+      :image
     )
   end
 end
