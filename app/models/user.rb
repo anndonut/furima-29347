@@ -28,5 +28,4 @@ class User < ApplicationRecord
   #   validates :birth_day
   # end
 
-
 end
