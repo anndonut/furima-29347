@@ -70,7 +70,7 @@ RSpec.describe Item, type: :model do
     end
 
     # 発送までの日数についての情報が空だと出品できないこと
-    it '配送先の地域が空だと出品できない'do
+    it '発送までの日数が空だと出品できない'do
       @item.processing_time = nil
       @item.valid?
       expect(@item.errors.full_messages).to include ("Processing time can't be blank")
@@ -101,9 +101,45 @@ RSpec.describe Item, type: :model do
 
     # 販売価格は半角数字のみ保存可能であること
     it '販売価格は半角数字でなければ出品できない'do
-    @item.selling_price  = "あいうえお"
-    @item.valid?
-    expect(@item.errors.full_messages).to include ("Selling price is not a number")
+      @item.selling_price  = "あいうえお"
+      @item.valid?
+      expect(@item.errors.full_messages).to include ("Selling price is not a number")
     end
+
+    #カテゴリーの情報の選択においてid:0のときに出品ができないこと
+    it 'カテゴリーの情報の選択においてid:0のときには出品ができない' do
+      @item.category_id = "0"
+      @item.valid?
+      expect(@item.errors.full_messages).to include ("Category must be other than 0")
+    end
+
+    #商品の状態についての情報の選択においてid:0のときに出品ができないこと
+    it 'カテゴリーの情報の選択においてid:0のときには出品ができない' do
+      @item.condition_id = "0"
+      @item.valid?
+      expect(@item.errors.full_messages).to include ("Condition must be other than 0")
+    end
+
+    #配送料の負担についての情報の選択においてid:0のときに出品ができないこと
+    it 'カテゴリーの情報の選択においてid:0のときには出品ができない' do
+      @item.shipping_expense_id = "0"
+      @item.valid?
+      expect(@item.errors.full_messages).to include ("Shipping expense must be other than 0")
+    end
+
+     #発送元の地域についての情報の選択においてid:0のときに出品ができないこと
+     it 'カテゴリーの情報の選択においてid:0のときには出品ができない' do
+      @item.ship_from_area_id = "0"
+      @item.valid?
+      expect(@item.errors.full_messages).to include ("Ship from area must be other than 0")
+    end
+
+    #発送までの日数についての情報の選択においてid:0のときに出品ができないこと
+    it '発送までの日数についての情報の選択においてid:0のときには出品ができない' do
+      @item.processing_time= "0"
+      @item.valid?
+      expect(@item.errors.full_messages).to include ("Processing time must be other than 0")
+    end
+
 
 end

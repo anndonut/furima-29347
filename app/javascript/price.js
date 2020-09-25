@@ -5,11 +5,11 @@ function price(){
 
   priceInput.addEventListener('keyup', ()=> { //数字入力時の非同期通信
     const value = priceInput.value; //金額、手数料、販売利益を定義
-    console.log(value)
+  
   if (value >= 300 && value <= 9999999){
     let fee = value * 0.1
     let gains = value - fee
-    console.log(fee)
+    
     add_tax.textContent = fee;
     profit.textContent = gains;
   }
