@@ -4,19 +4,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-  def new
-    @user = User.new
-  end 
+  # def new
+  #   @user = User.new
+  # end 
 
   def create
 
     @user = User.new(sign_up_params)
+    
     if @user.valid?
+      # binding.pry
        @user.save
+
+       sign_in(@user)
+       return redirect_to root_path
+
        redirect_to root_path
+
     else
+      # binding.pry
       render :new and return
-     end
+    end
     # session["devise.regist_data"] = {user: @user.attributes}
     # session["devise.regist_data"][:user]["password"] = params[:user][:password]
     # @address = @user.build_address
