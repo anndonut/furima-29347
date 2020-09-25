@@ -136,7 +136,7 @@ RSpec.describe Item, type: :model do
 
     #発送までの日数についての情報の選択においてid:0のときに出品ができないこと
     it '発送までの日数についての情報の選択においてid:0のときには出品ができない' do
-      @item.processing_time= "0"
+      @item.processing_time_id = "0"
       @item.valid?
       expect(@item.errors.full_messages).to include ("Processing time must be other than 0")
     end
