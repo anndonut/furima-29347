@@ -4,10 +4,10 @@ class ItemsController < ApplicationController
  def post
  end
 
- 
+
   def index
-    # @items = Item.order("created_at DESC")
-    @items = Item.all
+    @items = Item.order("created_at DESC")
+    # @items = Item.all
   end
 
   def new
