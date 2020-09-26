@@ -1,8 +1,15 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
 
- def post
- end
+  def show
+    @item = Item.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def destroy
+  end
 
 
   def index
