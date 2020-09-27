@@ -1,12 +1,19 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
 
+  before_action :find_id, except:[:index, :create,:new]
+  
+
+  def find_id
+      @item = Item.find(params[:id])
+  end
+
   def show
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
     if user_signed_in? && current_user.id == @item.user_id
       edit_item_path
     else
@@ -15,7 +22,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
     @item.update(item_params)
     if user_signed_in? && current_user.id == @item.user_id
       if @item.valid?
