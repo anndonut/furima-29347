@@ -10,24 +10,31 @@ class ItemsController < ApplicationController
     if user_signed_in? && current_user.id == @item.user_id
       edit_item_path
     else
-      render :new
+      render :edit
     end
   end
 
   def update
-    item = Item.find(params[:id])
-    if user_signed_in? && current_user.id == item.user_id
-      item.update(item_params)
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+    if user_signed_in? && current_user.id == @item.user_id
+      if @item.valid?
+      # item.update(item_params)
       redirect_to root_path
-    else
-      render :new
+      else
+       render :edit
+      end
     end
   end 
 
   def destroy
   end
 
+# index  index.html
+# @item  @item 
 
+# update  edit.html
+# item    @item 
   def index
     @items = Item.order("created_at DESC")
   end
