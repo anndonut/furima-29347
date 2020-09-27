@@ -26,7 +26,6 @@ class ItemsController < ApplicationController
     @item.update(item_params)
     if user_signed_in? && current_user.id == @item.user_id
       if @item.valid?
-      # item.update(item_params)
       redirect_to root_path
       else
        render :edit
@@ -37,11 +36,7 @@ class ItemsController < ApplicationController
   def destroy
   end
 
-# index  index.html
-# @item  @item 
 
-# update  edit.html
-# item    @item 
   def index
     @items = Item.order("created_at DESC")
   end
