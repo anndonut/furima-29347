@@ -1,12 +1,35 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
 
+  before_action :find_id, except:[:index, :create,:new]
+  
+
+  
+
   def show
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id]) >>before_actionとして集約
   end
 
   def edit
+    # @item = Item.find(params[:id]) >>before_actionとして集約
+    if user_signed_in? && current_user.id == @item.user_id
+      edit_item_path
+    else
+      render :edit
+    end
   end
+
+  def update
+    # @item = Item.find(params[:id]) >>before_actionとして集約
+    @item.update(item_params)
+    if user_signed_in? && current_user.id == @item.user_id
+      if @item.valid?
+      redirect_to root_path
+      else
+       render :edit
+      end
+    end
+  end 
 
   def destroy
   end
@@ -50,6 +73,10 @@ class ItemsController < ApplicationController
       redirect_to action: :index
     end
   end
+
+  def find_id
+    @item = Item.find(params[:id])
+  end 
 
 end
 
