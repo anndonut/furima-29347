@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   
 
   def show
-    # @item = Item.find(params[:id]) >>before_actionとして集約
+    @item = Item.find(params[:id]) 
   end
 
   def edit
