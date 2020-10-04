@@ -1,7 +1,8 @@
 class Item < ApplicationRecord
-  belongs_to :user, class_name: "User"
+  belongs_to :user
   has_one_attached :image
-  # has_one :transaction, class_name: "Transaction"
+  has_many :trade, class_name:"Transaction"
+
 
   validates :name,:introduction, :category_id, :shipping_expense_id, :ship_from_area_id, :processing_time_id,   presence: true
   validates :image, presence:true, unless: :was_attached?

@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
  
   has_many :items
-  has_many :transactions
+  has_many :trade, class_name:"Transaction"
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
