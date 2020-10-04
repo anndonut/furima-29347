@@ -31,11 +31,11 @@
     </div>
     <%# /支払額の表示 %>
 
-    <%= form_with model: @transaction, url:item_transactions_path, method: :post, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+    <%= form_with url:item_transactions_path, method: :post, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
     <%# メモ：form_with model:を指定するか url:を指定するか %>
   
   <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%= render 'shared/error_messages', model: f.object  %>
+     <%= render 'shared/error_messages', model: @transaction  %> 
     <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
     <%# カード情報の入力 %>
