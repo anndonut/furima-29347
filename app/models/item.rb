@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   has_many :trade, class_name:"Transaction"
-  # has_one :transaction
+
 
   validates :name,:introduction, :category_id, :shipping_expense_id, :ship_from_area_id, :processing_time_id,   presence: true
   validates :image, presence:true, unless: :was_attached?
