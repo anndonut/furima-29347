@@ -10,6 +10,10 @@ RSpec.describe TransactionDistination, type: :model do
       expect(@transaction_distination).to be_valid
     end
 
+    it 'building_nameは空でも保存できること' do
+      @transaction_distination.building_name = nil
+      expect(@transaction_distination).to be_valid
+    end
   
     it 'post_codeが空だと保存できないこと' do
       @transaction_distination.post_code = nil
@@ -43,11 +47,21 @@ RSpec.describe TransactionDistination, type: :model do
       expect(@transaction_distination.errors.full_messages).to include("House number can't be blank")
     end
 
-    
-    it 'building_nameは空でも保存できること' do
-      @transaction_distination.building_name = nil
-      expect(@transaction_distination).to be_valid
+    it 'phone_numberが空だと保存できないこと' do
+      @transaction_distination.phone_number = nil
+      @transaction_distination.valid?
+      expect(@transaction_distination.errors.full_messages).to include("Phone number can't be blank")
     end
+
+
+    it 'tokenが空だと保存できないこと' do
+      @transaction_distination.token = nil
+      @transaction_distination.valid?
+      expect(@transaction_distination.errors.full_messages).to include("Token can't be blank")
+    end
+    
+    
+  
 
   end
 end
