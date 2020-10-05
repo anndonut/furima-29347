@@ -28,7 +28,7 @@ RSpec.describe TransactionDistination, type: :model do
     end
 
     it 'prefecture_code_idを選択していないと保存できないこと' do
-      @transaction_distination.prefecture_code_id = "0"
+      @transaction_distination.prefecture_code_id = 0
       @transaction_distination.valid?
       expect(@transaction_distination.errors.full_messages).to include("Prefecture code must be other than 0")
     end
