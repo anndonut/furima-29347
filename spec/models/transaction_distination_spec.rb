@@ -54,6 +54,19 @@ RSpec.describe TransactionDistination, type: :model do
     end
 
 
+    it 'phone_numberがハイフンを含んでいると保存できないこと' do
+      @transaction_distination.phone_number = '090-0000-0000'
+      @transaction_distination.valid?
+      expect(@transaction_distination.errors.full_messages).to include("Phone number is invalid. Not include hyphen(-)")
+    end
+
+
+    it 'phone_numberが12桁以上の場合は保存できないこと' do
+      @transaction_distination.phone_number = '0900000000000'
+      @transaction_distination.valid?
+      expect(@transaction_distination.errors.full_messages).to include("Phone number is invalid. Not include hyphen(-)", "Phone number is too long (maximum is 12 characters)")
+    end
+
     it 'tokenが空だと保存できないこと' do
       @transaction_distination.token = nil
       @transaction_distination.valid?
