@@ -36,14 +36,13 @@
 
 
     <%# ログインしているユーザーには購入画面ボタンを非表示させ、かつ商品が売れていない場合はこちらを表示しましょう %>
-    <% if @items.nil? && current_user.id != @item.user_id %>
+    <% if @item.nil? && current_user.id != @item.user_id %>
     <%= link_to '購入画面に進む', item_transactions_path(@item.id) ,class:"item-red-btn"%>
     <% end %>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
 
 
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
-    <% if user_signed_in? && current_user.id != @item.user_id %>
     <div class="item-explain-box">
       <span><%= @item.introduction %></span>
     </div>
@@ -85,9 +84,9 @@
         <span>不適切な商品の通報</span>
       </div>
     </div>
-     <% else %>
+     <% unless user_signed_in?  %>
       <li> <% link_to 'ログインする', new_user_session_path, class: "login" %></li> 
-    <% end %>
+     <% end %>
   </div>
   <%# /商品の概要 %>
 
